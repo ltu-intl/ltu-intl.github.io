@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" data-page-title="meta.title.notice">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공지사항 | 루터대학교 국제교육원</title>
+<meta name="description" content="루터대학교 국제교육원 공지사항.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-mark.jpg" alt="루터대학교 로고" class="brand-mark">
+      <span class="brand-text">
+        <span data-i18n="brand.name">루터대학교</span>
+        <small data-i18n="brand.sub">국제교육원</small>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" data-i18n="nav.home">홈</a>
+      <a href="about.html" data-i18n="nav.about">국제교육원 소개</a>
+      <a href="program.html" data-i18n="nav.program">모집요강</a>
+      <a href="admission.html" data-i18n="nav.admission">입학안내</a>
+      <a href="gallery.html" data-i18n="nav.gallery">갤러리</a>
+      <a href="notice.html" class="active" data-i18n="nav.notice">공지사항</a>
+      <a href="contact.html" data-i18n="nav.contact">문의</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch">
+        <button type="button" data-lang="ko">KO</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="zh">中文</button>
+      </div>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero page-hero" style="background-image:url('assets/img/campus-05.jpg')">
+  <div class="container hero-inner">
+    <span class="hero-eyebrow" data-i18n="notice.hero.eyebrow">NOTICE</span>
+    <h1 data-i18n="notice.hero.title">공지사항</h1>
+    <p class="hero-lead" data-i18n="notice.hero.lead">국제교육원의 새로운 소식과 안내사항을 확인하세요.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="notice-wrap">
+      <div id="notice-list" class="notice-list" aria-live="polite"></div>
+      <article id="notice-detail" class="notice-detail" hidden>
+        <h2 id="nd-title"></h2>
+        <div class="notice-meta" id="nd-date"></div>
+        <div class="notice-body" id="nd-body"></div>
+        <p style="margin-top:32px;"><a href="notice.html" class="btn btn-navy" data-i18n="notice.back">목록으로</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/img/logo-mark.jpg" alt="루터대학교 로고" class="brand-mark">
+          <span data-i18n="brand.name">루터대학교</span>
+        </div>
+        <p data-i18n-html="footer.desc">기초 한국어 교육부터, 학위 취득, 성공적인 커리어 설계까지 —<br>당신의 모든 성장 과정을 루터대학교가 함께합니다.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.menu">바로가기</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">국제교육원 소개</a></li>
+          <li><a href="program.html" data-i18n="nav.program">모집요강</a></li>
+          <li><a href="admission.html" data-i18n="nav.admission">입학안내</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">갤러리</a>
+      <a href="notice.html" class="active" data-i18n="nav.notice">공지사항</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contact">연락처</h4>
+        <ul>
+          <li data-i18n="footer.address">(우)17072 경기도 용인시 기흥구 금화로 82번길 20 루터대학교 국제교육원</li>
+          <li>TEL. +82-31-679-2323</li>
+          <li>FAX. +82-31-283-1505</li>
+          <li>jwy9872@ltu.ac.kr</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Luther University International Education Institute. All rights reserved.</span>
+      <span data-i18n="footer.note">본 사이트는 국제교육원 홍보자료(초안)를 바탕으로 제작되었으며, 세부 내용은 대학 사정에 따라 변경될 수 있습니다.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/i18n-data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/notice.js"></script>
+</body>
+</html>

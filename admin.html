@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>공지사항 관리 | 루터대학교 국제교육원</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body { background: var(--color-bg-alt); }
+  .adm { max-width: 860px; margin: 40px auto; padding: 0 16px; }
+  .adm h1 { color: var(--color-primary); margin-bottom: 4px; }
+  .adm-card { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+  .adm label { display: block; font-weight: 600; margin: 14px 0 6px; }
+  .adm input[type=text], .adm input[type=password], .adm input[type=date], .adm textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 6px; font: inherit; }
+  .adm textarea { min-height: 220px; resize: vertical; }
+  .adm .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
+  .adm .msg { margin-top: 12px; font-weight: 600; }
+  .adm .msg.err { color: #b42318; }
+  .adm .msg.ok { color: #067647; }
+  .adm-item { display: flex; gap: 10px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--color-border); }
+  .adm-item .t { flex: 1; }
+  .adm-item small { color: var(--color-text-muted); display: block; }
+  .adm button.btn { cursor: pointer; border: 0; }
+  .adm .btn-sm { padding: 6px 14px; font-size: 0.9rem; }
+  .adm .danger { background: #b42318; color: #fff; }
+  .adm .ghost { background: #fff; color: var(--color-primary); border: 1px solid var(--color-primary) !important; }
+  .adm .note { color: var(--color-text-muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="adm">
+  <h1>공지사항 관리</h1>
+  <p class="note">관리자 전용 페이지입니다. <a href="notice.html">공지사항 보기</a> · <a href="index.html">홈으로</a></p>
+
+  <div class="adm-card" id="login">
+    <h3>관리자 로그인</h3>
+    <p class="note">GitHub 접근 토큰(Fine-grained token, 이 저장소의 <b>Contents: Read and write</b> 권한)을 입력하세요. 토큰은 이 브라우저 탭에만 임시 저장되며 탭을 닫으면 사라집니다.</p>
+    <label for="token">접근 토큰</label>
+    <input type="password" id="token" autocomplete="off" placeholder="github_pat_...">
+    <div class="row"><button class="btn btn-navy" id="btn-login" type="button">로그인</button></div>
+    <div class="msg" id="login-msg"></div>
+  </div>
+
+  <div id="panel" hidden>
+    <div class="adm-card">
+      <h3 id="form-title">새 공지 작성</h3>
+      <label for="f-title">제목</label>
+      <input type="text" id="f-title" maxlength="150">
+      <label for="f-date">날짜</label>
+      <input type="date" id="f-date">
+      <label for="f-body">내용</label>
+      <textarea id="f-body"></textarea>
+      <label><input type="checkbox" id="f-pinned"> 상단 고정(목록 맨 위에 표시)</label>
+      <div class="row">
+        <button class="btn btn-navy" id="btn-save" type="button">저장(게시)</button>
+        <button class="btn btn-sm ghost" id="btn-cancel" type="button" hidden>수정 취소</button>
+        <button class="btn btn-sm ghost" id="btn-logout" type="button" style="margin-left:auto">로그아웃</button>
+      </div>
+      <div class="msg" id="msg"></div>
+      <p class="note">저장 후 사이트에 반영되기까지 1~2분 걸립니다.</p>
+    </div>
+    <div class="adm-card">
+      <h3>등록된 공지</h3>
+      <div id="items"></div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
