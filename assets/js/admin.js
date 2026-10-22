@@ -13,7 +13,7 @@
   var sha = null;
   var editingId = null;
 
-  try { token = sessionStorage.getItem("ltu_admin_token") || ""; } catch (e) { /* ignore */ }
+  try { token = localStorage.getItem("ltu_admin_token") || ""; } catch (e) { /* ignore */ }
 
   function headers() {
     return { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" };
@@ -139,14 +139,14 @@
     if (!token) { say($("login-msg"), "토큰을 입력하세요.", false); return; }
     say($("login-msg"), "확인 중...", true);
     load().then(function () {
-      try { sessionStorage.setItem("ltu_admin_token", token); } catch (e) { /* ignore */ }
+      try { localStorage.setItem("ltu_admin_token", token); } catch (e) { /* ignore */ }
       $("token").value = "";
       enter();
     }).catch(function (err) { token = ""; say($("login-msg"), err.message, false); });
   }
 
   function logout() {
-    try { sessionStorage.removeItem("ltu_admin_token"); } catch (e) { /* ignore */ }
+    try { localStorage.removeItem("ltu_admin_token"); } catch (e) { /* ignore */ }
     token = ""; location.reload();
   }
 
@@ -156,5 +156,10 @@
   $("btn-logout").onclick = logout;
   $("token").addEventListener("keydown", function (e) { if (e.key === "Enter") login(); });
 
-  if (token) { load().then(enter).catch(function () { token = ""; }); }
+  if (token) {
+    load().then(enter).catch(function () {
+      token = "";
+      try { localStorage.removeItem("ltu_admin_token"); } catch (e) { /* ignore */ }
+    });
+  }
 })();
