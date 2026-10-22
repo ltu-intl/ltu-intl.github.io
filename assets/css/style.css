@@ -587,3 +587,10 @@ html[lang="en"] body { font-family: var(--font-en); }
   .notice-item { flex-wrap: wrap; }
   .notice-title { flex-basis: 100%; order: 2; white-space: normal; }
 }
+
+/* Home: latest notices */
+.home-notice { padding: 48px 0 8px; }
+.home-notice-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+.home-notice-head h2 { margin: 0; font-size: 1.5rem; color: var(--color-primary); }
+.home-notice-head a { color: var(--color-text-muted); text-decoration: none; font-size: 0.95rem; }
+.home-notice-head a:hover { color: var(--color-accent); }

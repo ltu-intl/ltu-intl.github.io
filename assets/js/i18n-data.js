@@ -19,6 +19,8 @@ const I18N = {
     "notice.empty": "등록된 공지사항이 없습니다.",
     "notice.pinned": "공지",
     "notice.back": "목록으로",
+    "home.notice.title": "공지사항",
+    "home.notice.more": "전체보기 +",
 
     "brand.name": "루터대학교",
     "brand.sub": "국제교육원",
@@ -321,6 +323,8 @@ const I18N = {
     "notice.empty": "No notices have been posted yet.",
     "notice.pinned": "Notice",
     "notice.back": "Back to list",
+    "home.notice.title": "Notices",
+    "home.notice.more": "View all +",
 
     "brand.name": "Luther University",
     "brand.sub": "Int'l Education Institute",
@@ -623,6 +627,8 @@ const I18N = {
     "notice.empty": "暂无公告。",
     "notice.pinned": "公告",
     "notice.back": "返回列表",
+    "home.notice.title": "公告",
+    "home.notice.more": "查看全部 +",
 
     "brand.name": "路德大学",
     "brand.sub": "国际教育院",

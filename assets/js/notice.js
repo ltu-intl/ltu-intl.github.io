@@ -4,7 +4,8 @@
 
   var listEl = document.getElementById("notice-list");
   var detailEl = document.getElementById("notice-detail");
-  if (!listEl || !detailEl) return;
+  var homeEl = document.getElementById("home-notices");
+  if (!(listEl && detailEl) && !homeEl) return;
 
   function t(key, fallback) {
     var lang = document.documentElement.getAttribute("lang") || "ko";
@@ -18,19 +19,19 @@
     });
   }
 
-  function renderList(items) {
-    detailEl.hidden = true;
-    listEl.hidden = false;
-    listEl.textContent = "";
+  function renderList(items, target, limit) {
+    if (detailEl) detailEl.hidden = true;
+    target.hidden = false;
+    target.textContent = "";
     if (!items.length) {
       var empty = document.createElement("p");
       empty.className = "notice-empty";
       empty.setAttribute("data-i18n", "notice.empty");
       empty.textContent = t("notice.empty", "등록된 공지사항이 없습니다.");
-      listEl.appendChild(empty);
+      target.appendChild(empty);
       return;
     }
-    sorted(items).forEach(function (n) {
+    sorted(items).slice(0, limit || items.length).forEach(function (n) {
       var a = document.createElement("a");
       a.className = "notice-item" + (n.pinned ? " pinned" : "");
       a.href = "notice.html?id=" + encodeURIComponent(n.id);
@@ -49,7 +50,7 @@
       date.textContent = n.date;
       a.appendChild(title);
       a.appendChild(date);
-      listEl.appendChild(a);
+      target.appendChild(a);
     });
   }
 
@@ -62,15 +63,18 @@
     document.title = n.title + " | 루터대학교 국제교육원";
   }
 
+  function show(items) {
+    if (homeEl) { renderList(items, homeEl, 5); return; }
+    var id = new URLSearchParams(location.search).get("id");
+    var found = id && items.filter(function (n) { return String(n.id) === id; })[0];
+    if (found) renderDetail(found); else renderList(items, listEl);
+  }
+
   function init() {
     fetch("assets/data/notices.json?t=" + Date.now(), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (items) {
-        var id = new URLSearchParams(location.search).get("id");
-        var found = id && items.filter(function (n) { return String(n.id) === id; })[0];
-        if (found) renderDetail(found); else renderList(items);
-      })
-      .catch(function () { renderList([]); });
+      .then(show)
+      .catch(function () { show([]); });
   }
 
   document.addEventListener("DOMContentLoaded", init);
