@@ -23,7 +23,7 @@
   }
 
   function applyLang(lang) {
-    if (!window.I18N || !I18N[lang]) return;
+    if (typeof I18N === "undefined" || !I18N[lang]) return;
     var dict = I18N[lang];
 
     document.documentElement.setAttribute("lang", lang);
